@@ -131,3 +131,5 @@ window.onload = function () {
 
     }, 12000);
 };
+
+import myAudio from './1.mp3';

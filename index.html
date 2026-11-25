@@ -13,10 +13,24 @@
 
 <body>
 
-    <audio autoplay="autopaly" loop="loop" id="audios" preload="auto">
-        <source src="./1.mp3">
+   <audio id="bg-music" src="./1.mp3" loop></audio>
 
-    </audio>
+<script>
+  const music = document.getElementById('bg-music');
+
+  function playMusicOnce() {
+    music.play().then(() => {
+      document.removeEventListener('click', playMusicOnce);
+      document.removeEventListener('touchstart', playMusicOnce);
+    }).catch(() => {});
+  }
+
+  // Thử phát ngay khi tải trang; nếu bị chặn thì chờ lần chạm/click đầu tiên
+  music.play().catch(() => {
+    document.addEventListener('click', playMusicOnce);
+    document.addEventListener('touchstart', playMusicOnce);
+  });
+</script>
 
     <div class="container" onselectstart="return false;" unselectable="on" style="-moz-user-select:none;">
 
